@@ -1,0 +1,8 @@
+@import url("./geral/geral.css");
+
+/* componentes */
+@import url("./componentes/cores.css");
+@import url("./componentes/tipografia.css");
+
+/* pages */
+@import url("./seçoes/home.css");
