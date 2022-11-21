@@ -23,3 +23,7 @@ body {
   grid-template-columns: 300px 1fr;
   height: 100vh;
 }
+
+.margin {
+  margin: 40px 40px 10px 40px;
+}

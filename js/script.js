@@ -1,5 +1,7 @@
-import Modal from "./modules/modal.js";
+import Modal from "./modules/Modal.js";
+import Cep from "./modules/Cep.js";
 
-// initModal();
-const contato = new Modal('.contato', '#contato', ".close img", 'touchstart', 'click')
-contato.init()
+const contato = new Modal(".contato", "#contato", ".close img");
+contato.init();
+const cep = new Cep('input[id="cep"]');
+cep.init();

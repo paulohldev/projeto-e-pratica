@@ -13,8 +13,7 @@
 }
 
 .contato-bg {
-  background-color: rgba(107,184,204, .4);
-
+  background-color: rgba(107, 184, 204, 0.4);
 }
 
 .contato-modal {
@@ -22,20 +21,21 @@
   max-width: 990px;
   padding: 40px 40px 90px 40px;
   border-radius: 8px;
-  animation: .5s showUp forwards;
+  animation: 0.5s showUp forwards;
 }
 
 @keyframes showUp {
   from {
     opacity: 0;
     transform: translate3d(0px, 50px, 0px);
-  } to {
+  }
+  to {
     opacity: 1;
     transform: translate3d(0px, 0px, 0px);
   }
 }
 
-.contato-modal .close { 
+.contato-modal .close {
   display: grid;
   grid-template-columns: 400px 1fr;
   align-items: center;

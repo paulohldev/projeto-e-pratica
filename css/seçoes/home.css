@@ -3,17 +3,16 @@
   flex-wrap: wrap;
   gap: 40px;
   text-align: center;
-  margin: 40px 40px 10px 40px;
   justify-content: center;
 }
 
 .home ul li {
-  width: 280px;
+  width: 320px;
 }
 
 .home ul li div {
   width: 100%;
-  height: 220px;
+  height: 260px;
   border-radius: 8px;
   background-color: grey;
 }

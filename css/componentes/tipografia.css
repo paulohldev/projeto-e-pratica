@@ -11,12 +11,20 @@
   font: 400 1.125rem/1.2 "Inter", sans-serif;
 }
 
+.i-R20 {
+  font: 400 1.25rem/1.2 "Inter", sans-serif;
+}
+
 .i-M18 {
   font: 400 1.125rem/1.2 "Inter", sans-serif;
 }
 
 .i-SM18 {
   font: 500 1.125rem/1.2 "Inter", sans-serif;
+}
+
+.i-SM20 {
+  font: 500 1.25rem/1.2 "Inter", sans-serif;
 }
 
 .i-B42 {
