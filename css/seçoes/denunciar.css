@@ -3,14 +3,15 @@
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   row-gap: 0;
+  margin-bottom: 30px;
+}
+
+.registrar-denuncia {
+  margin-bottom: 40px;
 }
 
 .registrar-denuncia h1 {
   margin-bottom: 40px;
-}
-
-.container-form {
-  margin-bottom: 30px;
 }
 
 .container-form select {
@@ -106,4 +107,14 @@
   grid-template-columns: 3fr 6fr;
   gap: 40px;
   align-items: start;
+}
+
+.erro {
+  display: none;
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.erro.ativo {
+  display: inline-block;
 }
