@@ -25,7 +25,9 @@ export default class Cep {
     target.style.borderColor = "#00b181";
   }
 
-  error(target) {
+  error(target, {bairro, rua} = this.dados) {
+    bairro.value = null;
+    rua.value = null;
     this.erro.classList.add("ativo");
     target.style.borderColor = "#da3128";
   }
@@ -46,7 +48,6 @@ export default class Cep {
       } else {
         this.success(target);
       }
-
     });
   }
 
