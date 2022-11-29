@@ -56,7 +56,9 @@ export default class Cep {
   }
 
   init() {
-    this.addEvent();
-    return this;
+    if(this.input) {
+      this.addEvent();
+      return this;
+    }
   }
 }
