@@ -1,16 +1,13 @@
-@import url("./geral/geral.css");
+@import url('./geral/geral.css');
 
 /* componentes */
-@import url("./componentes/cores.css");
-@import url("./componentes/tipografia.css");
+@import url('./componentes/cores.css');
+@import url('./componentes/tipografia.css');
 
 /* pages */
-@import url("./seçoes/home.css");
-@import url("./seçoes/menu.css");
-@import url("./seçoes/contato.css");
-@import url("./seçoes/denunciar.css");
-<<<<<<< HEAD
-@import url("./seçoes/login.css");
-=======
-@import url("./seçoes/denuncias.css");
->>>>>>> adfe6fecfd31dd5cf225ea21befc54146f201d76
+@import url('./seçoes/home.css');
+@import url('./seçoes/menu.css');
+@import url('./seçoes/contato.css');
+@import url('./seçoes/denunciar.css');
+@import url('./seçoes/denuncias.css');
+@import url('./seçoes/login.css');
