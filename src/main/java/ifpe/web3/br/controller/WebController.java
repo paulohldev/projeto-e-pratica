@@ -9,6 +9,8 @@ import ifpe.web3.br.model.Denuncia;
 import ifpe.web3.br.model.DenunciaDAO;
 import ifpe.web3.br.model.Endereco;
 import ifpe.web3.br.model.EnderecoDAO;
+import ifpe.web3.br.model.Usuario;
+import ifpe.web3.br.model.UsuarioDAO;
 
 @Controller
 public class WebController {
@@ -18,6 +20,10 @@ public class WebController {
 	
 	@Autowired
 	public EnderecoDAO enderecoDAO;
+	
+
+	@Autowired
+	public UsuarioDAO usuarioDAO;
 	
 	@GetMapping("/")
 	public String home() {
@@ -43,8 +49,21 @@ public class WebController {
 	
 	@GetMapping("/usuario")
 	public String usuario() {
+		
+		
 		return "usuario";
 	}
+	
+	@PostMapping("/salvarUsuario")
+	public String salvarUsuario(Usuario usuario) {
+		
+		usuarioDAO.save(usuario);
+		
+		
+		return "index";
+	}
+	
+	
 	
 	@GetMapping("/login")
 	public String login() {
