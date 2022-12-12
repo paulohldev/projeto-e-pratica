@@ -10,7 +10,10 @@ public class Categorias {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_categoria;
-	private String[] categoria;
+	private String categoria;
+	
+//	@ManyToOne
+//	private Denuncia fk_denuncia;
 	
 	public Integer getId_categoria() {
 		return id_categoria;
@@ -20,11 +23,11 @@ public class Categorias {
 		this.id_categoria = id_categoria;
 	}
 	
-	public String[] getCategoria() {
+	public String getCategoria() {
 		return categoria;
 	}
 	
-	public void setCategoria(String[] categoria) {
+	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
 	

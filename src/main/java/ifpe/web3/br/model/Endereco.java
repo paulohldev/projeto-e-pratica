@@ -15,6 +15,7 @@ public class Endereco {
 	private String cep;
 	private String bairro;
 	private String rua;
+	
 	@ManyToOne
 	private Denuncia fk_denuncia;
 	

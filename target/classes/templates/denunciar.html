@@ -59,12 +59,12 @@
           <label for="categoria" class="i-B16 black2">CATEGORIA</label>
           <select name="categoria" id="categoria">
             <option value="" disabled>Selecione</option>
-            <option value="">Saneamento</option>
-            <option value="">Iluminação Pública</option>
-            <option value="">Servidor</option>
-            <option value="">Obras</option>
-            <option value="">Transporte</option>
-            <option value="">Infraestrutura</option>
+            <option value="saneamento">Saneamento</option>
+            <option value="iluminação pública">Iluminação Pública</option>
+            <option value="servidor">Servidor</option>
+            <option value="obras">Obras</option>
+            <option value="transporte">Transporte</option>
+            <option value="infraestrutura">Infraestrutura</option>
           </select>
           <label for="descricao" class="i-B16 black2">DESCRIÇÃO</label>
           <textarea name="descricao" id="descricao" placeholder="Descreva a sua denúncia"></textarea>
@@ -75,7 +75,7 @@
         <div>
           <div>
             <label class="i-R20 white" for="anexo">ARQUIVO</label>
-            <input type="file" id="anexo" name="anexo" accept="video/*, image/*" placeholder="ARQUI''VO" />
+            <input type="file" id="anexo" name="anexos" accept="video/*, image/*" placeholder="ARQUIVO" />
             <span class="i-R18">formatos aceitos: mp4, jpg e png</span>
           </div>
           <input class="i-R20 white" type="submit" value="ENVIAR DENÚNCIA" />

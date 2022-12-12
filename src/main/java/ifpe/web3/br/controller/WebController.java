@@ -2,9 +2,12 @@ package ifpe.web3.br.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import ifpe.web3.br.model.CategoriaDAO;
+import ifpe.web3.br.model.Categorias;
 import ifpe.web3.br.model.Denuncia;
 import ifpe.web3.br.model.DenunciaDAO;
 import ifpe.web3.br.model.Endereco;
@@ -21,6 +24,8 @@ public class WebController {
 	@Autowired
 	public EnderecoDAO enderecoDAO;
 	
+	@Autowired 
+	public CategoriaDAO categoriaDAO;
 
 	@Autowired
 	public UsuarioDAO usuarioDAO;
@@ -34,36 +39,32 @@ public class WebController {
 	public String denunciar() {
 		return "denunciar";
 	}
-	
+		
 	@PostMapping("/salvarDenuncia")
-	public String salvarDenuncia(Endereco endereco, Denuncia denuncia) {
+	public String salvarDenuncia(Endereco endereco, Denuncia denuncia, Categorias categoria) {
+		categoriaDAO.save(categoria);
 		enderecoDAO.save(endereco);
 		denunciaDAO.save(denuncia);
 		return "index";
 	}
-
+	
 	@GetMapping("/denuncias")
-	public String denuncias() {
+	public String denuncias(Model model, Categorias categoria, Denuncia denuncia) {
+		model.addAttribute("denuncias", denunciaDAO.findAll());
+		model.addAttribute("categ", categoriaDAO.findById(1));
 		return "visualizar";
 	}
 	
 	@GetMapping("/usuario")
 	public String usuario() {
-		
-		
 		return "usuario";
 	}
 	
 	@PostMapping("/salvarUsuario")
 	public String salvarUsuario(Usuario usuario) {
-		
 		usuarioDAO.save(usuario);
-		
-		
 		return "index";
 	}
-	
-	
 	
 	@GetMapping("/login")
 	public String login() {

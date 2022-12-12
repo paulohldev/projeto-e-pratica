@@ -22,6 +22,8 @@ public class Denuncia {
 	private byte[] anexos;
 	@ManyToOne
 	private Usuario fk_usuario;
+	@ManyToOne
+	private Categorias fk_categoria;
 	
 	public Integer getId_denuncia() {
 		return id_denuncia;
@@ -53,18 +55,27 @@ public class Denuncia {
 	public void setContador(Integer contador) {
 		this.contador = contador;
 	}
-	public byte[] getAnexos() {
+	public byte[] getAnexo() {
 		return anexos;
 	}
 	public void setAnexos(byte[] anexos) {
 		this.anexos = anexos;
 	}
-//	public Usuario getFk_usuario() {
-//		return fk_usuario;
-//	}
-//	public void setFk_usuario(Usuario fk_usuario) {
-//		this.fk_usuario = fk_usuario;
-//	}
+	public Usuario getFk_usuario() {
+		return fk_usuario;
+	}
+	public void setFk_usuario(Usuario fk_usuario) {
+		this.fk_usuario = fk_usuario;
+	}
+	public byte[] getAnexos() {
+		return anexos;
+	}
+	public Categorias getFk_categoria() {
+		return fk_categoria;
+	}
+	public void setFk_categoria(Categorias fk_categoria) {
+		this.fk_categoria = fk_categoria;
+	}
 	
 	
 	
