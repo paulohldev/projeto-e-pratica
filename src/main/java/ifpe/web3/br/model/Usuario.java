@@ -19,7 +19,6 @@ public class Usuario {
 	private String cpf;
 	private boolean isAdm;
 	
-	
 	public Integer getId_usuario() {
 		return id_usuario;
 	}

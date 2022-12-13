@@ -49,9 +49,8 @@ public class WebController {
 	}
 	
 	@GetMapping("/denuncias")
-	public String denuncias(Model model, Categorias categoria, Denuncia denuncia) {
-		model.addAttribute("denuncias", denunciaDAO.findAll());
-		model.addAttribute("categ", categoriaDAO.findById(1));
+	public String denuncias(Model model) {
+		model.addAttribute("denuncias", denunciaDAO.listarDenuncias());
 		return "visualizar";
 	}
 	

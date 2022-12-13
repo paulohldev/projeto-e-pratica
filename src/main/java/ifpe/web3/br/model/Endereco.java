@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -16,7 +17,7 @@ public class Endereco {
 	private String bairro;
 	private String rua;
 	
-	@ManyToOne
+	@ManyToOne @JoinColumn(name="fk_denuncia")
 	private Denuncia fk_denuncia;
 	
 	public Integer getId_endereco() {

@@ -41,12 +41,12 @@
   <section class="margin denuncias">
     <div class="denuncias-conteudo">
       <div class="denuncia" th:each="denuncia : ${denuncias}">
-       <img src="https://i.pinimg.com/550x/52/f5/12/52f512f99b64f3c5d2ec9441cd7a3fd6.jpg" alt="">
+       <img src="https://i.pinimg.com/550x/52/f5/12/52f512f99b64f3c5d2ec9441cd7a3fd6.jpg" alt=""/>
         <div class="denuncias-descricao">
           <div class="descricao">
-            <span class="blueD i-B16" th:text="${categ}">SANEAMENTO</span>
-            <h2 class="black2 i-B20" th:text="${denuncia.assunto}">ESGOTO ABERTO COM CHEIRO RUIM</h2>
-            <p class="i-R18 gray" th:text="${denuncia.descricao}">Já ligamos várias vezes para resolver o problema desse esgoto, vieram uma vez, arrumaram e mesmo assim abriu e continuou a feder e ligamos novamente e ainda continua aberto...</p>
+            <span class="blueD i-B16">SANEAMENTO</span>
+            <h2 class="black2 i-B20" th:text="${denuncia.assunto}"></h2>
+            <p class="i-R18 gray" th:text="${denuncia.descricao}"></p>
           </div>
           <div class="denuncias-status">
             <p class="i-B16 green">STATUS: EM ANDAMENTO</p>

@@ -1,9 +1,11 @@
 package ifpe.web3.br.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 
@@ -18,11 +20,11 @@ public class Denuncia {
 	private String descricao;
 	private Integer contador;
 //	private Status status;
-	@Lob
+	@Lob @Column(columnDefinition = "BLOB")
 	private byte[] anexos;
-	@ManyToOne
+	@ManyToOne @JoinColumn(name="fk_usuario")
 	private Usuario fk_usuario;
-	@ManyToOne
+	@ManyToOne @JoinColumn(name="fk_categoria")
 	private Categorias fk_categoria;
 	
 	public Integer getId_denuncia() {

@@ -13,6 +13,7 @@ public class Empresa {
 	private String nome;
 	private String cnpj;
 	private String senha;
+	
 	public Integer getId_empresa() {
 		return id_empresa;
 	}
