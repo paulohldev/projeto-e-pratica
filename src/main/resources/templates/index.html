@@ -17,7 +17,7 @@
     <a href="./">
       <h1 class="white i-B42">LOGO</h1>
     </a>
-    <nav class="header-menu">
+    <nav class="header-menu" th:object="${usuario}">
       <ul>
         <li>
           <a class="white r-R20" href="./denunciar"><img src="./img/Information-circle.svg" alt="decoração" />Registrar Denúncias</a>
@@ -34,6 +34,9 @@
         </li>
         <li>
           <a class="white r-R20" id="contato" href="/"><img src="./img/Email.svg" alt="decoração" />Contato</a>
+        </li>
+         <li>
+          <p class="white user r-R20" th:if="${sessionUser}" th:text="${sessionUser.nome + ' ' + sessionUser.sobrenome}"></p>
         </li>
       </ul>
     </nav>

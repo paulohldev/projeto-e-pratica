@@ -19,7 +19,7 @@
         <div class="login-bg">
             <h4 class="r-B42 black1 login">Login</h4>
             
-            <form class="content" action="/efetuarLogin" method="post">
+            <form class="content" th:action="@{/auth}" method="post">
 
                 <a href="./usuario">
                     <img src="./img/Close.svg" class="close" alt="fechar">
@@ -28,6 +28,7 @@
                 <input type="email" id="email" name="email" placeholder="Digite seu e-mail">
                 <label for="senha" class="i-B16 black2">Senha</label>
                 <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+                <p class="r-R14 red" th:if="${naoAutorizado != null}" th:text="${naoAutorizado}"></p>
                 <div>
                     <button class="i-B16 white">Entrar</button>
                 </div>

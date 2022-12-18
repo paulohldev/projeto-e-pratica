@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ifpe.web3.br.model.CategoriaDAO;
 import ifpe.web3.br.model.Categorias;
@@ -14,6 +15,7 @@ import ifpe.web3.br.model.Endereco;
 import ifpe.web3.br.model.EnderecoDAO;
 import ifpe.web3.br.model.Usuario;
 import ifpe.web3.br.model.UsuarioDAO;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class WebController {
@@ -45,12 +47,12 @@ public class WebController {
 		categoriaDAO.save(categoria);
 		enderecoDAO.save(endereco);
 		denunciaDAO.save(denuncia);
-		return "index";
+		return "denunciar";
 	}
 	
 	@GetMapping("/denuncias")
 	public String denuncias(Model model) {
-		model.addAttribute("denuncias", denunciaDAO.listarDenuncias());
+		model.addAttribute("denuncias", this.denunciaDAO.listarDenuncias());
 		return "visualizar";
 	}
 	
@@ -62,11 +64,11 @@ public class WebController {
 	@PostMapping("/salvarUsuario")
 	public String salvarUsuario(Usuario usuario) {
 		usuarioDAO.save(usuario);
-		return "index";
+		return "redirect:/login";
 	}
 	
 	@GetMapping("/login")
-	public String login() {
+	public String login(Usuario usuario) {		
 		return "login";
 	}
 	
@@ -75,18 +77,27 @@ public class WebController {
 		return "cadastro";
 	}
 	
-	@PostMapping("/efetuarLogin")
-	 public String efetuarLogin( String email, String senha) {
+	@PostMapping("/auth")
+	 public String efetuarLogin(Usuario usuario, RedirectAttributes ra, HttpSession session) {
 		
-	Usuario usuario = this.usuarioDAO.findByEmailAndSenha(email, senha);
-	System.out.println();
+		usuario = this.usuarioDAO.findByEmailAndSenha(usuario.getEmail(), usuario.getSenha());
+		
 		if(usuario != null) {
-			return"redirect:/";
-			
-		}else {
+			session.setMaxInactiveInterval(-1);
+			session.setAttribute("usuarioLogado", usuario);
+			ra.addFlashAttribute("sessionUser", usuario);
+			return "redirect:/";
+		}	else {
+			ra.addFlashAttribute("naoAutorizado", "Dados incorretos ou não existe");
 			return"redirect:/login";
-		}
+		}	
+		
 	}
 	
+	@PostMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
 	
 }

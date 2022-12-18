@@ -132,6 +132,15 @@
   outline: 1px solid var(--blueD);
 }
 
+.logout {
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  text-transform: uppercase;
+  width: 100%;
+  border: none;
+}
+
 .cadastro button {
   padding: 10px 50px;
   border: none;

@@ -1,5 +1,6 @@
 package ifpe.web3.br.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,9 +14,12 @@ public class Usuario {
 	
 	private String nome;
 	private String sobrenome;
+	@Column(unique = true)
 	private String email;
+	@Column(unique = true)
 	private String telefone;
 	private String senha;
+	@Column(unique = true)
 	private String cpf;
 	private boolean isAdm;
 	

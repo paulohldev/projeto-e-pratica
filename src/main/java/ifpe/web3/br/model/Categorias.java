@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Categorias {
@@ -12,7 +13,6 @@ public class Categorias {
 	private Integer id_categoria;
 	private String categoria;
 	
-//	@ManyToOne
 //	private Denuncia fk_denuncia;
 	
 	public Integer getId_categoria() {
