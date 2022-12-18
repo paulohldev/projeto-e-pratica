@@ -75,4 +75,18 @@ public class WebController {
 		return "cadastro";
 	}
 	
+	@PostMapping("/efetuarLogin")
+	 public String efetuarLogin( String email, String senha) {
+		
+	Usuario usuario = this.usuarioDAO.findByEmailAndSenha(email, senha);
+	System.out.println();
+		if(usuario != null) {
+			return"redirect:/";
+			
+		}else {
+			return"redirect:/login";
+		}
+	}
+	
+	
 }
