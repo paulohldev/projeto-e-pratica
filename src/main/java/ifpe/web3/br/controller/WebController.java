@@ -35,7 +35,7 @@ public class WebController {
 	
 	@GetMapping("/")
 	public String index() {
-		return "usuario";
+		return "index";
 	}
 	
 	@GetMapping("/denunciar")
