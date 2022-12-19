@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -13,7 +15,8 @@ public class Categorias {
 	private Integer id_categoria;
 	private String categoria;
 	
-//	private Denuncia fk_denuncia;
+	@ManyToOne @JoinColumn(name="id_denuncia")
+	private Denuncia fk_denuncia;
 	
 	public Integer getId_categoria() {
 		return id_categoria;

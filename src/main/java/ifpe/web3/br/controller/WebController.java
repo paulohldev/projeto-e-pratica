@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ifpe.web3.br.model.CategoriaDAO;
@@ -33,8 +34,8 @@ public class WebController {
 	public UsuarioDAO usuarioDAO;
 	
 	@GetMapping("/")
-	public String home() {
-		return "index";
+	public String index() {
+		return "usuario";
 	}
 	
 	@GetMapping("/denunciar")
@@ -64,12 +65,12 @@ public class WebController {
 	@PostMapping("/salvarUsuario")
 	public String salvarUsuario(Usuario usuario) {
 		usuarioDAO.save(usuario);
-		return "redirect:/login";
+		return "redirect:/";
 	}
 	
-	@GetMapping("/login")
+	@GetMapping("/home")
 	public String login(Usuario usuario) {		
-		return "login";
+		return "user";
 	}
 	
 	@GetMapping("/cadastro")
@@ -77,21 +78,18 @@ public class WebController {
 		return "cadastro";
 	}
 	
-	@PostMapping("/auth")
+	@RequestMapping("/auth")
 	 public String efetuarLogin(Usuario usuario, RedirectAttributes ra, HttpSession session) {
 		
 		usuario = this.usuarioDAO.findByEmailAndSenha(usuario.getEmail(), usuario.getSenha());
 		
 		if(usuario != null) {
-			session.setMaxInactiveInterval(-1);
 			session.setAttribute("usuarioLogado", usuario);
-			ra.addFlashAttribute("sessionUser", usuario);
-			return "redirect:/";
+			return "redirect:/home";
 		}	else {
 			ra.addFlashAttribute("naoAutorizado", "Dados incorretos ou não existe");
-			return"redirect:/login";
-		}	
-		
+			return"redirect:/";
+		}		
 	}
 	
 	@PostMapping("/logout")
