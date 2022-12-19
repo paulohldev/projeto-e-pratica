@@ -44,11 +44,11 @@
        <img src="https://i.pinimg.com/550x/52/f5/12/52f512f99b64f3c5d2ec9441cd7a3fd6.jpg" alt=""/>
         <div class="denuncias-descricao">
           <div class="descricao">
-            <span class="blueD i-B16" th:text="${denuncia.fk_categoria.id_categoria}"></span>
+            <span class="blueD i-B16" th:text="${categoria.nome}">CATEGORIA AQUI</span>
             <h2 class="black2 i-B20" th:text="${denuncia.assunto}"></h2>
             <p class="i-R18 gray" th:text="${denuncia.descricao}"></p>
           </div>
-          <div class="denuncias-status">
+          <div class="denuncias-status">																																																																																												
             <p class="i-B16 green">STATUS: EM ANDAMENTO</p>
             <p class="red i-B16 like"><img src="./img/megafone-outline.svg" alt="apoiar denuncia">0 APOIANDO</p>
           </div>

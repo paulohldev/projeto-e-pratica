@@ -40,34 +40,32 @@
   </header>
   <section class="margin registrar-denuncia">
     <h1 class="i-B42 black1">Registrar Denúncia</h1>
-    <form th:action="@{/salvarDenuncia}" method="POST">
+    <form th:action="@{/salvarDenuncia}" method="POST" th:object="${denuncia}">
       <div class="container-form">
         <div>
           <label for="assunto" class="i-B16 black2">ASSUNTO</label>
-          <input type="text" id="assunto" name="assunto" placeholder="Digite o assunto" />
+          <input type="text" id="assunto" th:field="*{assunto}" placeholder="Digite o assunto" />
           <label for="cep" class="i-B16 black2">CEP</label>
-          <input type="text" id="cep" name="cep" placeholder="Digite o CEP" />
+          <input type="text" id="cep" th:field="*{endereco.cep}" placeholder="Digite o CEP" />
           <span class="erro i-B20 red">Cep inválido</span>
           <label for="bairro" class="i-B16 black2">BAIRRO</label>
-          <input type="text" id="bairro" name="bairro" placeholder="Digite o bairro" />
+          <input type="text" id="bairro" th:field="*{endereco.bairro}" placeholder="Digite o bairro" />
           <label for="rua" class="i-B16 black2">RUA</label>
-          <input type="text" id="rua" name="rua" placeholder="Digite a rua" />
+          <input type="text" id="rua" th:field="*{endereco.rua}" placeholder="Digite a rua" />
           <label for="pontoReferencia" class="i-B16 black2">PONTO DE REFERÊNCIA</label>
-          <input type="text" id="pontoReferencia" name="ponto_ref" placeholder="Digite o ponto de referencia" />
+          <input type="text" id="pontoReferencia" th:field="*{ponto_ref}" placeholder="Digite o ponto de referencia" />
         </div>
         <div>
           <label for="categoria" class="i-B16 black2">CATEGORIA</label>
-          <select name="categoria" id="categoria">
+          <select th:field="*{categoria}" id="categoria">
             <option value="" disabled>Selecione</option>
-            <option value="saneamento">Saneamento</option>
-            <option value="iluminação pública">Iluminação Pública</option>
-            <option value="servidor">Servidor</option>
-            <option value="obras">Obras</option>
-            <option value="transporte">Transporte</option>
-            <option value="infraestrutura">Infraestrutura</option>
+            <option 
+            th:each="categ : ${categorias}"
+            th:text="${categ.nome}"
+            th:value="${categ.id}">Saneamento</option>
           </select>
           <label for="descricao" class="i-B16 black2">DESCRIÇÃO</label>
-          <textarea name="descricao" id="descricao" placeholder="Descreva a sua denúncia"></textarea>
+          <textarea th:field="*{descricao}" id="descricao" placeholder="Descreva a sua denúncia"></textarea>
         </div>
       </div>
       <div class="arquivo">
