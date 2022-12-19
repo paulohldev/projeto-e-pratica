@@ -1,59 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"> 
+
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
- <meta charset="UTF-8" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projeto e Prática</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rubik:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/style.css" />
-
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entrar na conta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rubik:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css" />
 </head>
+
 <body>
- <header class="header-bg">
-    <a href="./">
-      <h1 class="white i-B42">LOGO</h1>
-    </a>
-    <nav class="header-menu">
-      <ul>
-        <li>
-          <a class="white r-R20" href="./denunciar"><img src="./img/Information-circle.svg" alt="decoração" />Registrar Denúncias</a>
-        </li>
-        <li>
-          <a class="white r-R20" href="./denuncias"><img src="./img/Flag.svg" alt="decoração" />Visualizar
-            Denúncias</a>
-        </li>
-        <li>
-          <a class="white r-R20" href="/"><img src="./img/Calendar.svg" alt="decoração" />Acompanhamento</a>
-        </li>
-        <li>
-          <a class="white r-R20" href="./usuario"><img src="./img/Person.svg" alt="decoração" />Login e Cadastro</a>
-        </li>
-        <li>
-          <a class="white r-R20" id="contato" href="/"><img src="./img/Email.svg" alt="decoração" />Contato</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  
-  
-    <h1 class="i-B42 black1">Seja Bem-Vindo ao DenunciaPE. 
- <img src="./img/wallpaper2.svg" alt="decoração" />  </h1>
-   
-    
-  
+    <div class="container">
+        <div class="login-bg">
+            <h4 class="r-B42 black1 login">Login</h4>
+            
+            <form class="content" th:action="@{/auth}" method="post">
 
-
-
-
-
-
-
-
-
+                <a href="./usuario">
+                    <img src="./img/Close.svg" class="close" alt="fechar">
+                </a>
+                <label for="email" class="i-B16 black2">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail">
+                <label for="senha" class="i-B16 black2">Senha</label>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+                <p class="r-R14 red" th:if="${naoAutorizado != null}" th:text="${naoAutorizado}"></p>
+                <div>
+                    <button class="i-B16 white">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
+
 </html>

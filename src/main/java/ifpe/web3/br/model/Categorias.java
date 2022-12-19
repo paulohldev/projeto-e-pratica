@@ -5,33 +5,28 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class Categorias {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_categoria;
-	private String categoria;
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @JoinColumn(name="id_categoria")
+	private Integer id;
+	private String nome;
 	
-	@ManyToOne @JoinColumn(name="id_denuncia")
-	private Denuncia fk_denuncia;
-	
-	public Integer getId_categoria() {
-		return id_categoria;
+	public Integer getId() {
+		return id;
 	}
 	
-	public void setId_categoria(Integer id_categoria) {
-		this.id_categoria = id_categoria;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
-	public String getCategoria() {
-		return categoria;
+	public String getNome() {
+		return nome;
 	}
 	
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	
