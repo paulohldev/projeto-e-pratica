@@ -10,7 +10,6 @@ import ifpe.web3.br.model.CategoriaDAO;
 import ifpe.web3.br.model.Categorias;
 import ifpe.web3.br.model.Denuncia;
 import ifpe.web3.br.model.DenunciaDAO;
-import ifpe.web3.br.model.Endereco;
 import ifpe.web3.br.model.EnderecoDAO;
 import ifpe.web3.br.model.Usuario;
 import ifpe.web3.br.model.UsuarioDAO;
@@ -32,21 +31,20 @@ public class DenunciaController {
 	public UsuarioDAO usuarioDAO;
 	
 	@GetMapping("/denunciar")
-	public String denunciar(Denuncia denuncia, Model model) {
+	public String denunciar(Model model, Denuncia denuncia) {
 		model.addAttribute("categorias", categoriaDAO.findAll());	
 		return "denunciar";
 	}		
 	
 	@PostMapping("/salvarDenuncia")
-	public String salvarDenuncia(Denuncia denuncia, HttpSession session) {
+	public String salvarDenuncia(Denuncia denuncia, HttpSession session, Model model) {
+
+		 if (session.getAttribute("tipo").equals("usuario") && session.getAttribute("tipo") != null) {
+			Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+			denuncia.setUsuario(usuario);
+			denunciaDAO.save(denuncia);
+		}
 		
-//		if(session.getAttribute("tipo").equals("usuario")) {
-//			Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
-//			denuncia.setUsuario(usuario);
-//		}
-//		session.get	
-		
-		denunciaDAO.save(denuncia);
 		return "redirect:/denunciar";
 	}
 	
