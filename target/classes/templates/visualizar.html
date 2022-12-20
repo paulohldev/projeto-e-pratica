@@ -41,10 +41,10 @@
   <section class="margin denuncias">
     <div class="denuncias-conteudo">
       <div class="denuncia" th:each="denuncia : ${denuncias}">
-       <img src="https://i.pinimg.com/550x/52/f5/12/52f512f99b64f3c5d2ec9441cd7a3fd6.jpg" alt=""/>
+       <img src="https://i.pinimg.com/550x/52/f5/12/52f512f99b64f3c5d2ec9441cd7a3fd6.jpg" alt="imagem demonstrando a denuncia"/>
         <div class="denuncias-descricao">
           <div class="descricao">
-            <span class="blueD i-B16" th:text="${categoria.nome}">CATEGORIA AQUI</span>
+            <span class="blueD categ i-B16" th:text="${denuncia.categoria.nome}">CATEGORIA AQUI</span>
             <h2 class="black2 i-B20" th:text="${denuncia.assunto}"></h2>
             <p class="i-R18 gray" th:text="${denuncia.descricao}"></p>
           </div>

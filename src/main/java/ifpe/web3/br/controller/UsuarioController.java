@@ -43,8 +43,9 @@ public class UsuarioController {
 			return "redirect:/denunciar";
 		}	else {
 			ra.addFlashAttribute("naoAutorizado", "Dados incorretos ou não existe");
-			return"redirect:/";
+			return "redirect:/";
 		}		
+		
 	}
 	
 	@PostMapping("/logout")

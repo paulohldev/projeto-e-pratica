@@ -23,9 +23,5 @@ public class WebController {
 		return "login";
 	}
 	
-	@GetMapping("/home")
-	public String login(Usuario usuario) {		
-		return "denunciar";
-	}
 	
 }
