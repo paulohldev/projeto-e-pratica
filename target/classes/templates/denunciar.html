@@ -35,6 +35,10 @@
         <li>
           <a class="white r-R20" id="contato" href="/"><img src="./img/Email.svg" alt="decoração" />Contato</a>
         </li>
+        <li>
+        	<p th:if="${session.usuarioLogado}" th:text="${session.usuarioLogado.nome}"></p>
+        </li>
+        <form th:action="@{/logout}" method="POST"><button>Sair</button></form>
       </ul>
     </nav>
   </header>
