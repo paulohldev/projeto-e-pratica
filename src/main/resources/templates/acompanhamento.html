@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DENUNCIAPE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rubik:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+ <header class="header-bg">
+    <a href="./">
+      <h1 class="white i-B42">LOGO</h1>
+    </a>
+    <nav class="header-menu">
+      <ul>
+        <li>
+          <a class="white r-R20" href="./denunciar"><img src="./img/Information-circle.svg" alt="decoração" />Registrar Denúncias</a>
+        </li>
+        <li>
+          <a class="white r-R20" href="./denuncias"><img src="./img/Flag.svg" alt="decoração" />Visualizar
+            Denúncias</a>
+        </li>
+        <li>
+          <a class="white r-R20" href="/acom"><img src="./img/Calendar.svg" alt="decoração" />Acompanhamento</a>
+        </li>
+        <li>
+          <a class="white r-R20" href="./usuario"><img src="./img/Person.svg" alt="decoração" />Login e Cadastro</a>
+        </li>
+        <li>
+          <a class="white r-R20" id="contato" href="/"><img src="./img/Email.svg" alt="decoração" />Contato</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+ 
+ 
+ 
+ <form class=e56_822 th:action="@{/protocolo}" th:object="${protocolo}" method="get">
+ 
+ 
+ <div  class="e56_700"> <span  class="e56_701">Acompanhamento</span>
+ 
+ <input type = text id = "protocolo" class=e56_709 placeholder="Digite o Protocolo Aqui.">
+ </div> 
+ 
+ <button class=e56_705>BUSCAR</button><span  class="e56_707">Protocolo</span>   </div>
+ 
+</form>
+
+
+
+
+
+
+</body>
+</html>
