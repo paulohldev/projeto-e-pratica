@@ -17,7 +17,7 @@ public class AcompanhamentoController {
 	}
 	
 	
-	public class ProtocoloController{
+	
 		
 		@GetMapping("/protocolo")
 		
@@ -28,7 +28,7 @@ public class AcompanhamentoController {
 		}
 		
 		
-	}
+	
 	
 	
 	
