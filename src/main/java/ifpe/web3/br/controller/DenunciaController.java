@@ -37,15 +37,17 @@ public class DenunciaController {
 	}		
 	
 	@PostMapping("/salvarDenuncia")
-	public String salvarDenuncia(Denuncia denuncia, HttpSession session, Model model) {
+	public String salvarDenuncia(Denuncia denuncia, HttpSession session) {
 
-		 if (session.getAttribute("tipo").equals("usuario") && session.getAttribute("tipo") != null) {
+		 if (session.getAttribute("tipo") != null && session.getAttribute("tipo").equals("usuario")) {
 			Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
 			denuncia.setUsuario(usuario);
 			denunciaDAO.save(denuncia);
+		} else {
+			denunciaDAO.save(denuncia);
 		}
-		
-		return "redirect:/denunciar";
+		 
+		 return "redirect:/denunciar";
 	}
 	
 	@GetMapping("/denuncias")
