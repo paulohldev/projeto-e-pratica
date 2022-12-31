@@ -40,10 +40,13 @@
  
  
  
- <div class=e56_823>
-  <div class="e56_697"></div><span  class="e56_660">Acompanhamento</span><span  class="e56_694">Protocolo: 43214574021684892</span><span  class="e56_695">Status: em andamento</span><span  class="e56_696">Descrição: uma equipe será enviada ao local.</span>
-  <div class=e56_661><span  class="e56_662">NOVA BUSCA</span></div>
-</div>
+ <form class=e56_823 th:action="@{/novaBusca}" th:object="${protocolo}" method="get">
+  
+  <a class="e56_697"></a><span  class="e56_660">Acompanhamento</span><span  class="e56_694" get.protocolo>Protocolo: </span><span  class="e56_695">Status: em andamento</span><span  class="e56_696">Descrição: uma equipe será enviada ao local.</span>
+  
+  <button class=e56_661><div class="e56_662">NOVA BUSCA</button></div>
+
+</form>
 
    
 

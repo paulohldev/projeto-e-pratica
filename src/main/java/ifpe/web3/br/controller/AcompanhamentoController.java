@@ -28,7 +28,13 @@ public class AcompanhamentoController {
 		}
 		
 		
-	
+@GetMapping("/novaBusca")
+		
+		public String novaBusca() {
+			
+			return "acompanhamento";
+			
+		}
 	
 	
 	
