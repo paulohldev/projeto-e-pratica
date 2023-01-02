@@ -1,5 +1,7 @@
 package ifpe.web3.br.model;
 
+import java.util.Random;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,6 +23,8 @@ public class Denuncia {
 	private String ponto_ref;
 	private String descricao;
 	private Integer contador;
+	private int protocolo;
+	
 //	private Status status;
 	@Lob @Column(columnDefinition = "BLOB")
 	private byte[] anexos;
@@ -97,6 +101,18 @@ public class Denuncia {
 	public void setCategoria(Categorias categoria) {
 		this.categoria = categoria;
 	}
+	public int getProtocolo() {
+		return protocolo;
+	}
+	public void setProtocolo(int protocolo) {
+		this.protocolo = protocolo;
+	}
+	
+	 public Random numeroDenuncia() {
+		 Random protocolo = new Random();
+		 
+		 return protocolo;
+	 }
 	
 	
 	

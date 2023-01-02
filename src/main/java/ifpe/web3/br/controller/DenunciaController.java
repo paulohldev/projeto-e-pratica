@@ -1,5 +1,7 @@
 package ifpe.web3.br.controller;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +43,14 @@ public class DenunciaController {
 
 		 if (session.getAttribute("tipo") != null && session.getAttribute("tipo").equals("usuario")) {
 			Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+			
+			Random ale = denuncia.numeroDenuncia();
+			denuncia.setProtocolo(ale.nextInt());
+			denuncia.setUsuario(usuario);
+			System.out.println(denuncia.getProtocolo());
+					
+					
+					
 			denuncia.setUsuario(usuario);
 			denunciaDAO.save(denuncia);
 		} else {
