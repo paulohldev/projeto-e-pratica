@@ -45,7 +45,7 @@ public class DenunciaController {
 			Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
 			
 			Random ale = denuncia.numeroDenuncia();
-			denuncia.setProtocolo(ale.nextInt());
+			denuncia.setProtocolo(ale.nextInt(10000000));
 			denuncia.setUsuario(usuario);
 			System.out.println(denuncia.getProtocolo());
 					
