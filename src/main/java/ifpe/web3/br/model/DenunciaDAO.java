@@ -9,5 +9,9 @@ public interface DenunciaDAO extends JpaRepository<Denuncia, Integer> {
 	
 	@Query("SELECT d FROM Denuncia d")
 	public List<Denuncia> listarDenuncias();
+	
+	@Query("SELECT d FROM Denuncia d where d.usuario.id like:id")
+	public List<Denuncia> listarDenunciasMi(Integer id);
+	 
 
 }

@@ -67,5 +67,14 @@ public class DenunciaController {
 		model.addAttribute("denuncias", this.denunciaDAO.listarDenuncias());
 		return "visualizar";
 	}
+	@GetMapping("/minhasDenuncias")
+	public String minhasDenuncias(HttpSession session,Model model, Denuncia denuncia, Categorias categoria) {
+	Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+		model.addAttribute("denuncia", denuncia);
+		model.addAttribute("categoria", categoria);
+		model.addAttribute("denuncias", this.denunciaDAO.listarDenunciasMi(usuario.getId_usuario()));
+		return "visualizarMinhas";
+	}
+	
 
 }
