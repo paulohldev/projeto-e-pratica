@@ -33,6 +33,12 @@
         <li>
           <a class="white r-R20" id="contato" href="/"><img src="./img/Email.svg" alt="decoração" />Contato</a>
         </li>
+        <li>
+        	<form th:action="@{/logout}" method="POST">
+        	<p th:if="${session.usuarioLogado}" th:text="${session.usuarioLogado.nome}"></p>
+        	<button th:if="${session.usuarioLogado}">Sair</button>
+        	</form>
+        </li>
       </ul>
     </nav>
   </header>
@@ -50,10 +56,32 @@
  <button class=e56_705>BUSCAR</button> <span  class="e56_707">Protocolo</span>   </div>
  
 </form>
-
-
-
-
+<div class="contato contato-bg">
+    <div class="contato-modal">
+      <div class="close">
+        <p class="i-M18 black1">
+          Para dúvidas, sugestões e reclamações entre em contato com uma das
+          opções abaixo.
+        </p>
+        <img src="./img/Close.svg" alt="botão de fechar" />
+      </div>
+      <div class="conteudo">
+        <div>
+          <span class="i-SM18 black1">E-mail</span>
+          <p class="i-R18 white">suporte@app.com</p>
+        </div>
+        <div>
+          <span class="i-SM18 black1">Telefone</span>
+          <p class="i-R18 white">(81) 91111-2222</p>
+        </div>
+        <div>
+          <span class="i-SM18 black1">Whatsapp</span>
+          <p class="i-R18 white">(81) 91111-2222</p>
+        </div>
+      </div>
+    </div>
+</div>
+  <script type="module" src="./js/script.js"></script>
 
 
 </body>

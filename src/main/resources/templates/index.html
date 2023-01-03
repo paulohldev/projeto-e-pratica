@@ -33,6 +33,12 @@
         <li>
           <a class="white r-R20" id="contato" href="/"><img src="./img/Email.svg" alt="decoração" />Contato</a>
         </li>
+        <li>
+        	<form th:action="@{/logout}" method="POST">
+        	<p th:if="${session.usuarioLogado}" th:text="${session.usuarioLogado.nome}"></p>
+        	<button th:if="${session.usuarioLogado}">Sair</button>
+        	</form>
+        </li>
       </ul>
     </nav>
   </header>
@@ -41,7 +47,32 @@
     <h1 class="i-B42 black1">Seja Bem-Vindo ao DenunciaPE. 
  <img src="./img/wallpaper2.svg" alt="decoração" />  </h1>
 
-
+<div class="contato contato-bg">
+    <div class="contato-modal">
+      <div class="close">
+        <p class="i-M18 black1">
+          Para dúvidas, sugestões e reclamações entre em contato com uma das
+          opções abaixo.
+        </p>
+        <img src="./img/Close.svg" alt="botão de fechar" />
+      </div>
+      <div class="conteudo">
+        <div>
+          <span class="i-SM18 black1">E-mail</span>
+          <p class="i-R18 white">suporte@app.com</p>
+        </div>
+        <div>
+          <span class="i-SM18 black1">Telefone</span>
+          <p class="i-R18 white">(81) 91111-2222</p>
+        </div>
+        <div>
+          <span class="i-SM18 black1">Whatsapp</span>
+          <p class="i-R18 white">(81) 91111-2222</p>
+        </div>
+      </div>
+    </div>
+</div>
+  <script type="module" src="./js/script.js"></script>
 
 
 
