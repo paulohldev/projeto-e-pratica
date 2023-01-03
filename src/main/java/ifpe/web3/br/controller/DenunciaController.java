@@ -76,5 +76,10 @@ public class DenunciaController {
 		return "visualizarMinhas";
 	}
 	
+	@GetMapping("/removerDenuncia")
+	public String removerDenuncia(Integer codigo) {
+		denunciaDAO.deleteById(codigo);
+		return "redirect:/visualizarMinhas";
+	}
 
 }
