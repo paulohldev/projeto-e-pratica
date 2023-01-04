@@ -27,14 +27,16 @@
             Denúncias</a>
         </li>
         <li>
-          <a class="white r-R20" href="./denuncias"><img src="./img/Flag.svg" alt="decoração" />Visualizar Minhas Denuncias</a>
+          <a th:if="${session.usuarioLogado}" class="white r-R20" href="./denuncias"><img src="./img/Flag.svg" alt="decoração" />Minhas Denuncias</a>
         </li>
         <li>
           <a class="white r-R20" href="/acom"><img src="./img/Calendar.svg" alt="decoração" />Acompanhamento</a>
         </li>
         <li>
-          <a class="white r-R20" href="./usuario"><img src="./img/Person.svg" alt="decoração" />Login e Cadastro</a>
-        </li>
+          <a th:if="${session.usuarioLogado}"><img src="./img/Person.svg" alt="decoração" />
+          <p th:if="${session.usuarioLogado}" th:text="${session.usuarioLogado.nome}" class="white r-R20"></p></a>
+          <a th:if="${session.usuarioLogado == null}" class="white r-R20" href="./usuario"><img src="./img/Person.svg" alt="decoração" />Login e Cadastro</a>
+		</li>
         <li>
           <a class="white r-R20" id="contato" href="/"><img src="./img/Email.svg" alt="decoração" />Contato</a>
         </li>
