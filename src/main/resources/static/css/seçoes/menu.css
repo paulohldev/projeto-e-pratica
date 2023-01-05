@@ -35,4 +35,15 @@
 .user {
 	text-transform: uppercase;
 }
+
+.logout {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font: 400 1.25rem/1.2 'Rubik', sans-serif;
+  font-size: 25px;
+}
   
