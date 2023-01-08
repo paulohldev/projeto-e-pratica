@@ -27,6 +27,12 @@ public class UsuarioController {
 		return "cadastro";
 	}	
 	
+	@GetMapping("/editarPerfil")
+	public String editarPerfil() {
+		return"editarPerfil";
+		
+	}
+	
 	@PostMapping("/salvarUsuario")
 	public String salvarUsuario(Usuario usuario) {
 		usuarioDAO.save(usuario);
