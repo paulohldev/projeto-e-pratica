@@ -24,8 +24,9 @@ public class Denuncia {
 	private String descricao;
 	private Integer contador;
 	private int protocolo;
+	private boolean status;
+	private String resposta;
 	
-//	private Status status;
 	@Lob @Column(columnDefinition = "BLOB")
 	private byte[] anexos;
 	
@@ -108,11 +109,27 @@ public class Denuncia {
 		this.protocolo = protocolo;
 	}
 	
-	 public Random numeroDenuncia() {
+	public boolean isStatus() {
+		return status;
+	}
+	
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	
+	public Random numeroDenuncia() {
 		 Random protocolo = new Random();
 		 
 		 return protocolo;
 	 }
+	
+	public String getResposta() {
+		return resposta;
+	}
+	
+	public void setResposta(String resposta) {
+		this.resposta = resposta;
+	}
 	
 	
 	

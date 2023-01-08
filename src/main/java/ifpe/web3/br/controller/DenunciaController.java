@@ -49,15 +49,24 @@ public class DenunciaController {
 			denuncia.setUsuario(usuario);
 			System.out.println(denuncia.getProtocolo());
 					
-					
-					
-			denuncia.setUsuario(usuario);
 			denunciaDAO.save(denuncia);
+			
 		} else {
+			Random ale = denuncia.numeroDenuncia();
+			denuncia.setProtocolo(ale.nextInt(10000000));
+			System.out.println(denuncia.getProtocolo());
+			
 			denunciaDAO.save(denuncia);
 		}
 		 
 		 return "redirect:/denunciar";
+	}
+	
+	@PostMapping("/salvarDenunciaEdit")
+	public String salvarDenuncia(Integer id_denuncia, Denuncia denuncia, Model model) {
+		model.addAttribute("denuncia", this.denunciaDAO.findById(id_denuncia).orElse(null));
+		denunciaDAO.save(denuncia);
+		return "redirect:/denuncias";
 	}
 	
 	@GetMapping("/denuncias")
@@ -68,7 +77,7 @@ public class DenunciaController {
 		return "visualizar";
 	}
 	@GetMapping("/minhasDenuncias")
-	public String minhasDenuncias(HttpSession session,Model model, Denuncia denuncia, Categorias categoria) {
+	public String minhasDenuncias(HttpSession session, Model model, Denuncia denuncia, Categorias categoria) {
 	Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
 		model.addAttribute("denuncia", denuncia);
 		model.addAttribute("categoria", categoria);
@@ -77,9 +86,17 @@ public class DenunciaController {
 	}
 	
 	@GetMapping("/removerDenuncia")
-	public String removerDenuncia(Integer codigo) {
-		denunciaDAO.deleteById(codigo);
-		return "redirect:/visualizarMinhas";
+	public String removerDenuncia(Integer id_denuncia) {
+		denunciaDAO.deleteById(id_denuncia);
+		return "redirect:/minhasDenuncias";
+	}
+	
+	@GetMapping("/editarDenuncia")
+	public String editarDenuncia(Integer id_denuncia, Model model, Categorias categoria) {
+		Denuncia denuncia = denunciaDAO.findById(id_denuncia).orElse(null);
+		model.addAttribute("denuncia", denuncia);
+		model.addAttribute("categorias", categoriaDAO.findAll());
+		return "/editarDenuncia";
 	}
 
 }

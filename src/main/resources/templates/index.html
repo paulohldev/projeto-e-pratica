@@ -17,6 +17,12 @@
     </a>
     <nav class="header-menu">
       <ul>
+      	<li>
+      	  <a th:if="${session.usuarioLogado}" th:href="@{/editarPerfil(id_usuario=${session.usuarioLogado.id_usuario})}">
+      	  <img src="./img/Person.svg" alt="decoração" />
+          <p th:if="${session.usuarioLogado}" th:text="${session.usuarioLogado.nome}" class="white r-R20"></p>
+          </a>
+        </li>
         <li>
           <a class="white r-R20" href="./denunciar"><img src="./img/Information-circle.svg" alt="decoração" />Registrar Denúncias</a>
         </li>
@@ -31,9 +37,7 @@
           <a class="white r-R20" href="/acom"><img src="./img/Calendar.svg" alt="decoração" />Acompanhamento</a>
         </li>
         <li>
-          <a th:if="${session.usuarioLogado}"><img src="./img/Person.svg" alt="decoração" />
-          <p th:if="${session.usuarioLogado}" th:text="${session.usuarioLogado.nome}" class="white r-R20"></p></a>
-          <a th:if="${session.usuarioLogado == null  } " class="white r-R20" href="./usuario"><img src="./img/Person.svg" alt="decoração" />Login e Cadastro</a>
+        	<a th:if="${session.usuarioLogado == null}" class="white r-R20" href="./usuario"><img src="./img/Person.svg" alt="decoração" />Login e Cadastro</a>
 		</li>
         <li>
           <a class="white r-R20" id="contato" href="/"><img src="./img/Email.svg" alt="decoração" />Contato</a>
@@ -49,7 +53,7 @@
 
 
     <h1 class="i-B42 black1">Seja Bem-Vindo ao DenunciaPE. 
- <img src="./img/wallpaper2.svg" alt="decoração" />  </h1>
+ <img src="./img/homepage.jpg" alt="decoração" />  </h1>
 
 <div class="contato contato-bg">
     <div class="contato-modal">

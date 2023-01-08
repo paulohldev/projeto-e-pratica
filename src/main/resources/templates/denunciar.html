@@ -19,6 +19,13 @@
     </a>
     <nav class="header-menu">
       <ul>
+      	<li>
+      	    <a th:if="${session.usuarioLogado}" th:href="@{/editarPerfil(id_usuario=${session.usuarioLogado.id_usuario})}">
+      	    <img src="./img/Person.svg" alt="decoração" />
+          	<p th:if="${session.usuarioLogado}" th:text="${session.usuarioLogado.nome}" class="white r-R20"></p>
+          	</a>
+        </li>
+      	
         <li>
           <a class="white r-R20" href="./denunciar"><img src="./img/Information-circle.svg" alt="decoração" />Registrar Denúncias</a>
         </li>
@@ -33,8 +40,6 @@
           <a class="white r-R20" href="/acom"><img src="./img/Calendar.svg" alt="decoração" />Acompanhamento</a>
         </li>
 		<li>
-          <a th:if="${session.usuarioLogado}"><img src="./img/Person.svg" alt="decoração" />
-          <p th:if="${session.usuarioLogado}" th:text="${session.usuarioLogado.nome}" class="white r-R20"></p></a>
           <a th:if="${session.usuarioLogado == null}" class="white r-R20" href="./usuario"><img src="./img/Person.svg" alt="decoração" />Login e Cadastro</a>
 		</li>
 
@@ -55,20 +60,25 @@
       <div class="container-form">
         <div>
           <label for="assunto" class="i-B16 black2">ASSUNTO</label>
-          <input type="text" id="assunto" th:field="*{assunto}" placeholder="Digite o assunto" />
+          <input type="text" id="assunto" required th:field="*{assunto}" placeholder="Digite o assunto" />
           <label for="cep" class="i-B16 black2">CEP</label>
-          <input type="text" id="cep" th:field="*{endereco.cep}" placeholder="Digite o CEP" />
+          <input type="text" required id="cep" th:field="*{endereco.cep}" placeholder="Digite o CEP" />
           <span class="erro i-B20 red">Cep inválido</span>
           <label for="bairro" class="i-B16 black2">BAIRRO</label>
-          <input type="text" id="bairro" th:field="*{endereco.bairro}" placeholder="Digite o bairro" />
+          <input type="text" required id="bairro" th:field="*{endereco.bairro}" placeholder="Digite o bairro" />
           <label for="rua" class="i-B16 black2">RUA</label>
-          <input type="text" id="rua" th:field="*{endereco.rua}" placeholder="Digite a rua" />
+          <input type="text" required id="rua" th:field="*{endereco.rua}" placeholder="Digite a rua" />
           <label for="pontoReferencia" class="i-B16 black2">PONTO DE REFERÊNCIA</label>
-          <input type="text" id="pontoReferencia" th:field="*{ponto_ref}" placeholder="Digite o ponto de referencia" />
+          <input type="text" id="pontoReferencia" th:field="*{ponto_ref}" placeholder="Digite o ponto de referencia" /><br><br>
+          <div th:if="${session.usuarioLogado}">
+          <label th:if="${session.usuarioLogado.isAdm}" for="resposta" class="i-B16 black2">RESPOSTA</label>
+          <textarea th:if="${session.usuarioLogado.isAdm}" th:field="*{resposta}" id="resposta" placeholder="Responder a denúncia" required></textarea>
+          </div>
+          
         </div>
         <div>
           <label for="categoria" class="i-B16 black2">CATEGORIA</label>
-          <select th:field="*{categoria}" id="categoria">
+          <select th:field="*{categoria}" id="categoria" required>
             <option value="" disabled>Selecione</option>
             <option 
             th:each="categ : ${categorias}"
@@ -76,17 +86,22 @@
             th:value="${categ.id}">Saneamento</option>
           </select>
           <label for="descricao" class="i-B16 black2">DESCRIÇÃO</label>
-          <textarea th:field="*{descricao}" id="descricao" placeholder="Descreva a sua denúncia"></textarea>
+          <textarea th:field="*{descricao}" id="descricao" placeholder="Descreva a sua denúncia" required></textarea><br><br>
+          <div th:if="${session.usuarioLogado}">
+          <label th:if="${session.usuarioLogado.isAdm}" for="status" class="i-B16 black2">STATUS</label>
+          	<select th:if="${session.usuarioLogado.isAdm}" th:field="*{status}" id="status">
+          	<option value="FALSE">EM ANDAMENTO</option>
+          	<option value="TRUE">CONCLUÍDO</option>
+          </select>
+          </div>
+          
         </div>
       </div>
+      <div>
+        <label class="i-SM20 black1" for="myfile">Envie uma foto ou um vídeo da denúncia</label><br><br>
+  		<input th:field="*{anexos}" type="file" id="myfile" name="myfile"><br><br>
+      </div>
       <div class="arquivo">
-        <h2 class="i-SM20 black1">Envie uma foto ou um vídeo da denúncia</h2>
-        <div>
-          <div>
-            <label class="i-R20 white" for="anexo">ARQUIVO</label>
-            <input type="file" id="anexo" name="anexos" accept="video/*, image/*" placeholder="ARQUIVO" />
-            <span class="i-R18">formatos aceitos: mp4, jpg e png</span>
-          </div>
           <input class="i-R20 white" type="submit" value="ENVIAR DENÚNCIA" />
         </div>
       </div>

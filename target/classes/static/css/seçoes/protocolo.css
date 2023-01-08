@@ -2,14 +2,16 @@
 	overflow:hidden;
 }
 .e56_823 { 
-	width:800px;
-	height:352px;
-	position:absolute;
+	width: 50%;
+	height: 100%;
+	margin-left:30%;
+	margin-top:8%;
+	position: absolute;
 }
 .e56_697 { 
 	background-color:rgba(107.10000425577164, 183.81252229213715, 204.00000303983688, 1);
-	width:800px;
-	height:352px;
+	width:100%;
+	height:50%;
 	position:absolute;
 	left:0px;
 	top:0px;
