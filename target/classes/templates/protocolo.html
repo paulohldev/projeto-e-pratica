@@ -13,10 +13,16 @@
 <body>
  <header class="header-bg">
     <a href="./">
-      <h1 class="white i-B42">LOGO</h1>
+      <h2 class="white i-B42">DenunciaPE</h2>
     </a>
     <nav class="header-menu">
       <ul>
+      	<li>
+      	    <a th:if="${session.usuarioLogado}" th:href="@{/editarPerfil(id_usuario=${session.usuarioLogado.id_usuario})}">
+      	    <img src="./img/Person.svg" alt="decoração" />
+          	<p th:if="${session.usuarioLogado}" th:text="${session.usuarioLogado.nome}" class="white r-R20"></p>
+          	</a>
+        </li>
         <li>
           <a class="white r-R20" href="./denunciar"><img src="./img/Information-circle.svg" alt="decoração" />Registrar Denúncias</a>
         </li>
@@ -25,29 +31,63 @@
             Denúncias</a>
         </li>
         <li>
+          <a th:if="${session.usuarioLogado}" class="white r-R20" href="./minhasDenuncias"><img src="./img/Flag.svg" alt="decoração" />Minhas Denúncias</a>
+        </li>
+        <li>
           <a class="white r-R20" href="/acom"><img src="./img/Calendar.svg" alt="decoração" />Acompanhamento</a>
         </li>
         <li>
-          <a class="white r-R20" href="./usuario"><img src="./img/Person.svg" alt="decoração" />Login e Cadastro</a>
-        </li>
+        	<a th:if="${session.usuarioLogado == null}" class="white r-R20" href="./usuario"><img src="./img/Person.svg" alt="decoração" />Login e Cadastro</a>
+		</li>
         <li>
           <a class="white r-R20" id="contato" href="/"><img src="./img/Email.svg" alt="decoração" />Contato</a>
+        </li>
+        <li>
+        	<form th:action="@{/logout}" method="POST">
+        	<button class="logout" th:if="${session.usuarioLogado}">Sair</button>
+        	</form>
         </li>
       </ul>
     </nav>
   </header>
+
  
  
  
- 
- <div class=e56_823>
-  <div class="e56_697"></div><span  class="e56_660">Acompanhamento</span><span  class="e56_694">Protocolo: 43214574021684892</span><span  class="e56_695">Status: em andamento</span><span  class="e56_696">Descrição: uma equipe será enviada ao local.</span>
-  <div class=e56_661><span  class="e56_662">NOVA BUSCA</span></div>
+ <form class=e56_823 th:action="@{/novaBusca}" th:object="${protocolo}" method="get">
+  
+  <a class="e56_697"></a><span  class="e56_660">Acompanhamento</span><span  class="e56_694" get.protocolo>Protocolo: </span><span  class="e56_695">Status: em andamento</span><span  class="e56_696">Descrição: uma equipe será enviada ao local.</span>
+  
+  <button class=e56_661><div class="e56_662">NOVA BUSCA</button></div>
+
+</form>
+
+<div class="contato contato-bg">
+    <div class="contato-modal">
+      <div class="close">
+        <p class="i-M18 black1">
+          Para dúvidas, sugestões e reclamações entre em contato com uma das
+          opções abaixo.
+        </p>
+        <img src="./img/Close.svg" alt="botão de fechar" />
+      </div>
+      <div class="conteudo">
+        <div>
+          <span class="i-SM18 black1">E-mail</span>
+          <p class="i-R18 white">suporte@app.com</p>
+        </div>
+        <div>
+          <span class="i-SM18 black1">Telefone</span>
+          <p class="i-R18 white">(81) 91111-2222</p>
+        </div>
+        <div>
+          <span class="i-SM18 black1">Whatsapp</span>
+          <p class="i-R18 white">(81) 91111-2222</p>
+        </div>
+      </div>
+    </div>
 </div>
-
-   
-
-
+  <script type="module" src="./js/script.js"></script>
 
 
 
