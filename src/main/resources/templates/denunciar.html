@@ -56,6 +56,15 @@
   </header>
   <section class="margin registrar-denuncia">
     <h1 class="i-B42 black1">Registrar Denúncia</h1>
+    
+    <div th:if="${proto != null}">
+      <h2 class="black2 i-B20">Denúncia registrada com sucesso!</h2>
+        <p class="i-M18 black1">
+          A sua denúncia foi registrada sobre o protocolo de Nº: <b th:text="${proto}"></b><br>
+          Guarde este número para acompanhar a sua reclamação.
+        </p><br><br>
+      </div>
+
     <form th:action="@{/salvarDenuncia}" method="POST" th:object="${denuncia}">
       <div class="container-form">
         <div>
@@ -98,8 +107,8 @@
         </div>
       </div>
       <div>
-        <label class="i-SM20 black1" for="myfile">Envie uma foto ou um vídeo da denúncia</label><br><br>
-  		<input th:field="*{anexos}" type="file" id="myfile" name="myfile"><br><br>
+        <label class="i-SM20 black1" for="anexos">Envie uma foto ou um vídeo da denúncia</label><br><br>
+  		<input type="file" id="anexos" th:field="*{anexos}" name="anexos"><br><br>
       </div>
       <div class="arquivo">
           <input class="i-R20 white" type="submit" value="ENVIAR DENÚNCIA" />

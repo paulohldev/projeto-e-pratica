@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ifpe.web3.br.model.CategoriaDAO;
 import ifpe.web3.br.model.Categorias;
@@ -39,7 +40,7 @@ public class DenunciaController {
 	}		
 	
 	@PostMapping("/salvarDenuncia")
-	public String salvarDenuncia(Denuncia denuncia, HttpSession session) {
+	public String salvarDenuncia(Denuncia denuncia, HttpSession session, RedirectAttributes ra) {
 
 		 if (session.getAttribute("tipo") != null && session.getAttribute("tipo").equals("usuario")) {
 			Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
@@ -48,6 +49,7 @@ public class DenunciaController {
 			denuncia.setProtocolo(ale.nextInt(10000000));
 			denuncia.setUsuario(usuario);
 			System.out.println(denuncia.getProtocolo());
+			ra.addFlashAttribute("proto", denuncia.getProtocolo());
 					
 			denunciaDAO.save(denuncia);
 			
@@ -55,7 +57,7 @@ public class DenunciaController {
 			Random ale = denuncia.numeroDenuncia();
 			denuncia.setProtocolo(ale.nextInt(10000000));
 			System.out.println(denuncia.getProtocolo());
-			
+			ra.addFlashAttribute("proto", denuncia.getProtocolo());
 			denunciaDAO.save(denuncia);
 		}
 		 
