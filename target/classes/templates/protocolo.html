@@ -50,17 +50,39 @@
       </ul>
     </nav>
   </header>
-
- 
- 
- 
- <form class=e56_823 th:action="@{/novaBusca}" th:object="${protocolo}" method="get">
-  
-  <a class="e56_697"></a><span  class="e56_660">Acompanhamento</span><span  class="e56_694" get.protocolo>Protocolo: </span><span  class="e56_695">Status: em andamento</span><span  class="e56_696">Descrição: uma equipe será enviada ao local.</span>
-  
-  <button class=e56_661><div class="e56_662">NOVA BUSCA</button></div>
-
-</form>
+<section class="margin denuncias">
+    <div class="denuncias-conteudo">
+      <div class="denuncia" th:each="denuncia : ${denuncias}">
+       <img src="https://i.pinimg.com/550x/52/f5/12/52f512f99b64f3c5d2ec9441cd7a3fd6.jpg" alt="imagem demonstrando a denuncia"/>
+        <div class="denuncias-descricao">
+          <div class="descricao">
+          	<p class="i-R18 black1">Protocolo Nº: <b th:text="${denuncia.protocolo}"></b></p>
+            <span class="blueD categ i-B16" th:text="${denuncia.categoria.nome}">CATEGORIA AQUI</span>
+            <h2 class="black2 i-B20" th:text="${denuncia.assunto}"></h2>
+            <p class="i-R18 black1" th:text="${denuncia.descricao}"></p>
+            <p class="i-R18 black2" th:text="${denuncia.resposta}"></p>
+          </div>
+          <div class="denuncias-status" th:if="${session.usuarioLogado}">
+          	<a class="denuncias-edit" th:if="${session.usuarioLogado.isAdm}" th:href="@{/editarDenuncia(id_denuncia=${denuncia.id_denuncia})}">
+          	<p class="i-B16 blueC">Responder denúncia</p>
+          	</a>
+          </div>
+          <div class="denuncias-status">
+          	<div class="denuncias-status2">
+          		<p class="i-B16 green" th:text="${denuncia.status ? 'STATUS: CONCLUÍDO' : 'STATUS: EM ANDAMENTO'}"></p>
+          	</div>																																																																																												
+          <div th:if="${session.usuarioLogado}" class="denuncias-delete">
+          	<a th:if="${session.usuarioLogado.isAdm}" th:href="@{/removerDenuncia(id_denuncia=${denuncia.id_denuncia})}">
+          	<p class="red i-B16 like">EXCLUIR DENÚNCIA</p>
+          	</a>
+          </div>
+          <p></p>
+          </a>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
 
 <div class="contato contato-bg">
     <div class="contato-modal">
