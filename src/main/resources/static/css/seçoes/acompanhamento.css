@@ -1,4 +1,14 @@
-
+.buscar input[type="submit"] {
+  display: block;
+  background-color: var(--blueD);
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+}
 
 .e56_822 {
 	width: 70%;

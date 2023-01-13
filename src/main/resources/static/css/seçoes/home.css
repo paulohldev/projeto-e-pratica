@@ -24,15 +24,9 @@
   margin-top: 10px;
 }
 
-.e56_800 {
-	background-color: rgba(107.10000425577164, 183.81252229213715, 204.00000303983688, 1);
-	width: 60%;
-	height: 50%;
-	position: relative;
-	margin: auto;
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
-	border-bottom-left-radius: 8px;
-	border-bottom-right-radius: 8px;
-	text-align: center;
+#slogan {
+  font-size: 9.5em;
+  margin-left: 5%;
+  text-shadow: 6px 6px black;
+ 
 }

@@ -72,17 +72,15 @@ public class Denuncia {
 	public void setContador(Integer contador) {
 		this.contador = contador;
 	}
-	public byte[] getAnexo() {
-		return anexos;
-	}
-	public void setAnexos(byte[] anexos) {
-		this.anexos = anexos;
-	}
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+	public void setAnexos(byte[] anexos) {
+		this.anexos = anexos;
 	}
 	public byte[] getAnexos() {
 		return anexos;

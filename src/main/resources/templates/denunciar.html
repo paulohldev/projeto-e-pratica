@@ -65,7 +65,7 @@
         </p><br><br>
       </div>
 
-    <form th:action="@{/salvarDenuncia}" method="POST" th:object="${denuncia}">
+    <form th:action="@{/salvarDenuncia}" method="POST" th:object="${denuncia}" enctype="multipart/form-data">
       <div class="container-form">
         <div>
           <label for="assunto" class="i-B16 black2">ASSUNTO</label>
@@ -79,10 +79,6 @@
           <input type="text" required id="rua" th:field="*{endereco.rua}" placeholder="Digite a rua" />
           <label for="pontoReferencia" class="i-B16 black2">PONTO DE REFERÊNCIA</label>
           <input type="text" id="pontoReferencia" th:field="*{ponto_ref}" placeholder="Digite o ponto de referencia" /><br><br>
-          <div th:if="${session.usuarioLogado}">
-          <label th:if="${session.usuarioLogado.isAdm}" for="resposta" class="i-B16 black2">RESPOSTA</label>
-          <textarea th:if="${session.usuarioLogado.isAdm}" th:field="*{resposta}" id="resposta" placeholder="Responder a denúncia" required></textarea>
-          </div>
           
         </div>
         <div>
@@ -96,19 +92,12 @@
           </select>
           <label for="descricao" class="i-B16 black2">DESCRIÇÃO</label>
           <textarea th:field="*{descricao}" id="descricao" placeholder="Descreva a sua denúncia" required></textarea><br><br>
-          <div th:if="${session.usuarioLogado}">
-          <label th:if="${session.usuarioLogado.isAdm}" for="status" class="i-B16 black2">STATUS</label>
-          	<select th:if="${session.usuarioLogado.isAdm}" th:field="*{status}" id="status">
-          	<option value="FALSE">EM ANDAMENTO</option>
-          	<option value="TRUE">CONCLUÍDO</option>
-          </select>
-          </div>
-          
+                    
         </div>
       </div>
       <div>
-        <label class="i-SM20 black1" for="anexos">Envie uma foto ou um vídeo da denúncia</label><br><br>
-  		<input type="file" id="anexos" th:field="*{anexos}" name="anexos"><br><br>
+        <label class="i-SM20 black1" for="anexos">Envie uma foto da denúncia</label><br><br>
+  		<input type="file" id="anexos" accept="image/*" name="ImgDenuncia"><br><br>
       </div>
       <div class="arquivo">
           <input class="i-R20 white" type="submit" value="ENVIAR DENÚNCIA" />

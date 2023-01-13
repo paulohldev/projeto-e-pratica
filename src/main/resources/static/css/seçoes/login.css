@@ -13,6 +13,12 @@
   overflow-x: hidden;
 }
 
+form i {
+    margin-left: -30px;
+    cursor: pointer;
+}
+
+
 .es1 {
   width: 670px;
   border-radius: 8px;
