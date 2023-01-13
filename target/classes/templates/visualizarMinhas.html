@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Denúncias</title>
+  <title>Minhas Denúncias</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rubik:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./css/style.css" />
 </head>
@@ -55,27 +55,36 @@
 
   <section class="margin denuncias">
     <div class="denuncias-conteudo">
-      <div class="denuncia" th:each="denuncia : ${denuncias}">
-       <img src="https://i.pinimg.com/550x/52/f5/12/52f512f99b64f3c5d2ec9441cd7a3fd6.jpg" alt="imagem demonstrando a denuncia"/>
-        <div class="denuncias-descricao">
+    <h2 class="i-B42 black1">Minhas Denúncias</h2><br><br>
+      <div class="denuncias" th:each="denuncia : ${denuncias}">
+      <div th:if="${denuncia.anexos != null}">
+      	<img height="200px" width="200px" class="img_denuncia" alt="imagem" th:src="|/anexos/${denuncia.id_denuncia}|"/>
+      </div>
+      <div th:if="${denuncia.anexos == null}">
+      	<img src="https://i.pinimg.com/550x/52/f5/12/52f512f99b64f3c5d2ec9441cd7a3fd6.jpg" height="200px" width="200px" alt="imagem demonstrando a denuncia"/>
+      </div>
+      <div class="denuncias-descricao">
           <div class="descricao">
-            <span class="blueD categ i-B16" th:text="${denuncia.categoria.nome}">CATEGORIA AQUI</span>
+          	<span class="blueD categ i-B16" th:text="${denuncia.categoria.nome}">CATEGORIA AQUI</span>	
             <h2 class="black2 i-B20" th:text="${denuncia.assunto}"></h2>
             <p class="i-R18 black1" th:text="${denuncia.descricao}"></p>
           	<p class="i-R18 black2" th:text="${denuncia.resposta}"></p>
           </div>
-          <div class="denuncias-status" th:if="${session.usuarioLogado}">
-          	<a class="denuncias-edit" th:href="@{/editarDenuncia(id_denuncia=${denuncia.id_denuncia})}">
-          	<p class="i-B16 blueC">Editar denúncia</p>
-          	</a>
-          </div>
           <div class="denuncias-status">
-          	<div class="denuncias-status2">
-          		<p class="i-B16 green" th:text="${denuncia.status ? 'STATUS: CONCLUÍDO' : 'STATUS: EM ANDAMENTO'}"></p>
-          	</div>																																																																																												
+          	<div th:if="${denuncia.status == true}" class="denuncias-status-true">
+          		<p th:if="${denuncia.status == true}" class="i-B16 green">STATUS: CONCLUÍDO</p>
+          	</div>
+          	<div th:if="${denuncia.status == false}" class="denuncias-status-false">
+          		<p th:if="${denuncia.status == false}" class="i-B16 yellow">STATUS: EM ANDAMENTO</p>
+          	</div>
+          	<div th:if="${session.usuarioLogado}">
+          		<a class="denuncias-edit" th:href="@{/editarDenuncia(id_denuncia=${denuncia.id_denuncia})}">
+          		<p class="i-B16 blueD">EDITAR DENÚNCIA</p>
+          		</a>
+          	</div>																																																																																																																																																																																								
           	<div th:if="${session.usuarioLogado}" class="denuncias-delete">
           		<a th:href="@{/removerDenuncia(id_denuncia=${denuncia.id_denuncia})}">
-          		<p class="red i-B16 like">EXCLUIR DENÚNCIA</p>
+          		<p class="red i-B16 like">EXCLUIR</p>
           		</a>
           	</div>
       	  </div>

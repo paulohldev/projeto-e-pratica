@@ -1,14 +1,14 @@
 .denuncias {
   display: grid;
-  grid-template-columns: 7fr 2fr;
+  grid-template-columns: 7.5fr 2fr;
   gap: 40px;
   position: relative;
 }
 
 .denuncias-conteudo > div {
   display: grid;
-  grid-template-columns: 3fr 4fr;
-  gap: 20px;
+  grid-template-columns: 1.8fr 4fr;
+  gap: 5px;
   margin-bottom: 40px;
 }
 
@@ -26,7 +26,7 @@
   font-size: 1rem;
   line-height: 1.3;
   padding-top: 12px;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .descricao span {
@@ -39,8 +39,29 @@
   justify-content: space-between;
 }
 
-.denuncias-status2 {
+.denuncias-bairro {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.denuncias-bairro2 {
+  display: flex;
+  justify-content: start;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 5px;
+}
+
+.bairro {
+	padding-left: 5px;
+}
+
+.denuncias-status-true {
   border-bottom: 2px solid var(--green);
+}
+
+.denuncias-status-false {
+  border-bottom: 2px solid var(--yellow);
 }
 
 .denuncias-delete {
@@ -51,14 +72,13 @@
   border-bottom: 2px solid var(--blueC);
 }
 
-
 .like {
   cursor: pointer;
 }
 
 .denuncias-status p + p {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   row-gap: 0;
 }
 

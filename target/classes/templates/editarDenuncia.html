@@ -54,8 +54,18 @@
     </nav>
   </header>
   <section class="margin registrar-denuncia">
+  		<div class="cancelar-denuncia">
+        	<a href="./minhasDenuncias">
+        	<p class="red i-B16 like">CANCELAR ALTERAÇÕES</p></a>
+        </div>
     <h1 class="i-B42 black1">Editar Denúncia</h1>
-    <form th:action="@{/salvarDenunciaEdit}" method="POST" th:object="${denuncia}">
+    <div th:if="${denuncia.protocolo != null}">
+        <p class="i-M18 black1">
+          Denúncia registrada sobre o protocolo de Nº: <b th:text="${denuncia.protocolo}"></b>
+        </p><br>
+        <br>
+    </div>
+    <form th:action="@{/salvarDenunciaEdit}" method="POST" th:object="${denuncia}" enctype="multipart/form-data">
       <div class="container-form">
         <div>
         	<input type= "hidden" th:field="*{id_denuncia}" name="id_denun">
@@ -96,12 +106,11 @@
           	<option value="TRUE">CONCLUÍDO</option>
           </select>
           </div>
-          
         </div>
       </div>
       <div>
-        <label class="i-SM20 black1" for="anexos">Envie uma foto ou um vídeo da denúncia</label><br><br>
-  		<input type="file" id="anexos" th:field="*{anexos}" name="anexos"><br><br>
+        <label class="i-SM20 black1" for="anexos">Envie uma foto da denúncia (A foto enviada substituirá a atual)</label><br><br>
+  		<input type="file" id="anexos" accept="image/*" name="ImgDenuncia"><br><br>
       </div>
       <div class="arquivo">
           <input class="i-R20 white" type="submit" value="SALVAR DENÚNCIA" />

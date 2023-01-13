@@ -11,7 +11,7 @@
 }
 
 .registrar-denuncia h1 {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .container-form select {
@@ -69,7 +69,7 @@
 
 .arquivo h2 {
   width: 20ch;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .arquivo input[type="file"] {
@@ -117,4 +117,10 @@
 
 .erro.ativo {
   display: inline-block;
+}
+
+.cancelar-denuncia {
+  position: absolute;
+  left: 80%;
+  top: 5%;
 }
