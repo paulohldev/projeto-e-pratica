@@ -33,6 +33,10 @@
         <li>
           <a class="white r-R20" href="./denuncias"><img src="./img/Flag.svg" alt="decoração" />Visualizar Denúncias</a>
         </li>
+        <li th:if="${session.usuarioLogado}">
+        	<a th:if="${session.usuarioLogado.isAdm}" href="./listaUsuario"><img src="./img/Person.svg" alt="decoração" />
+        	<p class="white r-R20">Listar Usuários</p></a>
+        </li>
         <li>
           <a th:if="${session.usuarioLogado}" class="white r-R20" href="./minhasDenuncias"><img src="./img/Flag.svg" alt="decoração" />Minhas Denúncias</a>
         </li>
@@ -72,6 +76,16 @@
             <p class="i-R18 black1" th:text="${denuncia.descricao}"></p>
           </div>
           <div class="denuncias-status">
+        	<div class="denuncias-bairro">
+        		<b>Bairro:</b>
+      			<p class="bairro" th:text="${denuncia.endereco.bairro}"></p>
+      		</div>
+      		<div class="denuncias-bairro">
+      			<b>Rua:</b>
+      			<p class="bairro" th:text="${denuncia.endereco.rua}"></p>
+      		</div>
+      	</div>
+          <div class="denuncias-status">
           	<div th:if="${denuncia.status == true}" class="denuncias-status-true">
           		<p th:if="${denuncia.status == true}" class="i-B16 green">STATUS: CONCLUÍDO</p>
           	</div>
@@ -90,47 +104,45 @@
           	</div>
           </div>
         </div>
-        <div class="denuncias-bairro">
-        	<div class="denuncias-bairro2">
-        		<b>Bairro:</b>
-      			<p class="bairro" th:text="${denuncia.endereco.bairro}"></p>
-      		</div>
-      		<div class="denuncias-bairro2">
-      			<b>Rua:</b>
-      			<p class="bairro" th:text="${denuncia.endereco.rua}"></p>
-      		</div>
-      	</div>
-      	<div>
-      		<p class="i-R18 black2"><b>Resposta:</b></p>
-      		<p class="i-R18 black2" th:text="${denuncia.resposta}"></p>
-      	
+      	<div class="resposta" th:if="${denuncia.resposta != null}">
+      		<h2 class="black1 i-B20">Resposta à denuncia:</h2>
+        </div>
+        <div class="resposta">
+        	<p class="i-R18 black2" th:text="${denuncia.resposta}"></p>
         </div>
       </div>
     </div>
     <nav class="filtro-bg">
       <p class="i-M18 white">Filtrar</p>
       <div>
+      <form action="" method="POST">
         <label class="i-SM18 white" for="categoria">Por categoria</label>
-        <select name="" id="categoria">
-          <option value="">SANEAMENTO</option>
-          <option value="">ILUMINAÇÃO</option>
-          <option value="">INFRAESTRUTURA</option>
-        </select>
+        <select name="filtracateg" id="categoria">
+            <option value="" disabled>Selecione</option>
+            <option 
+            th:each="categ : ${categorias}"
+            th:text="${categ.nome}"
+            th:value="${categ.id}">Saneamento</option>
+          </select>
+          <input class="filtrar" type="submit" value="Filtrar">
+      </form>
       </div>
-      <div>
+      <div class="filtrar-espaco">
+      <form action="" method="POST">
         <label class="i-SM18 white" for="bairro">Por bairro</label>
-        <select name="" id="bairro">
-          <option value="">VILA RICA</option>
-          <option value="">SANTO ALEIXO</option>
-          <option value="">CENTRO</option>
-        </select>
+        <input class="filtra-bairro" type="text" name="bairro" id="bairro" placeholder="Nome do Bairro">
+      	<input class="filtrar" type="submit" value="Filtrar">
+      </form>
       </div>
-      <div>
+      <div class="filtrar-espaco">
+      <form action="" method="POST">
         <label class="i-SM18 white" for="status">Por status</label>
-        <select name="" id="status">
-          <option value="">EM ANDAMENTO</option>
-          <option value="">CONCLUIDO</option>
+        <select name="status" id="status">
+          <option value="FALSE">EM ANDAMENTO</option>
+          <option value="TRUE">CONCLUIDO</option>
         </select>
+      	<input class="filtrar" type="submit" value="Filtrar">
+      </form>
       </div>
     </nav>
   </section>

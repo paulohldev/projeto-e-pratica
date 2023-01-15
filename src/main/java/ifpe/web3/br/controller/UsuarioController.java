@@ -43,6 +43,25 @@ public class UsuarioController {
 		return "redirect:/login";
 	}
 	
+	@GetMapping("/listaUsuario")
+	public String listaUsuario(Model model) {
+		model.addAttribute("lista",usuarioDAO.findAll());
+		return "listaUsuario";
+	}
+	
+	@GetMapping("/removerUsuario")
+	public String removerUsuario(Integer id_usuario, RedirectAttributes ra) {
+		Usuario usuario = usuarioDAO.findById(id_usuario).orElse(null);
+		if (usuario.isAdm() == false) {
+			usuarioDAO.deleteById(id_usuario);
+			ra.addFlashAttribute("deletado", usuario);
+		} else {
+			ra.addFlashAttribute("erro", usuario);
+		}
+		
+		return "redirect:/listaUsuario";
+	}
+	
 	@PostMapping("/salvarPerfil")
 	public String salvarPerfil(Usuario usuario) {
 		usuarioDAO.save(usuario);

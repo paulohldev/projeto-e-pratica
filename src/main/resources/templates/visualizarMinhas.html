@@ -32,6 +32,10 @@
           <a class="white r-R20" href="./denuncias"><img src="./img/Flag.svg" alt="decoração" />Visualizar
             Denúncias</a>
         </li>
+        <li th:if="${session.usuarioLogado}">
+        	<a th:if="${session.usuarioLogado.isAdm}" href="./listaUsuario"><img src="./img/Person.svg" alt="decoração" />
+        	<p class="white r-R20">Listar Usuários</p></a>
+        </li>
         <li>
           <a th:if="${session.usuarioLogado}" class="white r-R20" href="./minhasDenuncias"><img src="./img/Flag.svg" alt="decoração" />Minhas Denúncias</a>
         </li>
@@ -54,7 +58,7 @@
   </header>
 
   <section class="margin denuncias">
-    <div class="denuncias-conteudo">
+	<div class="denuncias-conteudo">
     <h2 class="i-B42 black1">Minhas Denúncias</h2><br><br>
       <div class="denuncias" th:each="denuncia : ${denuncias}">
       <div th:if="${denuncia.anexos != null}">
@@ -63,13 +67,24 @@
       <div th:if="${denuncia.anexos == null}">
       	<img src="https://i.pinimg.com/550x/52/f5/12/52f512f99b64f3c5d2ec9441cd7a3fd6.jpg" height="200px" width="200px" alt="imagem demonstrando a denuncia"/>
       </div>
-      <div class="denuncias-descricao">
-          <div class="descricao">
-          	<span class="blueD categ i-B16" th:text="${denuncia.categoria.nome}">CATEGORIA AQUI</span>	
-            <h2 class="black2 i-B20" th:text="${denuncia.assunto}"></h2>
+        <div class="denuncias-descricao">
+        <div class="denuncias-status">
+        	<span class="blueD categ i-B16" th:text="${denuncia.categoria.nome}">CATEGORIA AQUI</span>
+        </div>	
+        <div class="descricao">
+            <h2 class="black1 i-B20" th:text="${denuncia.assunto}"></h2>
             <p class="i-R18 black1" th:text="${denuncia.descricao}"></p>
-          	<p class="i-R18 black2" th:text="${denuncia.resposta}"></p>
           </div>
+          <div class="denuncias-status">
+        	<div class="denuncias-bairro">
+        		<b>Bairro:</b>
+      			<p class="bairro" th:text="${denuncia.endereco.bairro}"></p>
+      		</div>
+      		<div class="denuncias-bairro">
+      			<b>Rua:</b>
+      			<p class="bairro" th:text="${denuncia.endereco.rua}"></p>
+      		</div>
+      	</div>
           <div class="denuncias-status">
           	<div th:if="${denuncia.status == true}" class="denuncias-status-true">
           		<p th:if="${denuncia.status == true}" class="i-B16 green">STATUS: CONCLUÍDO</p>
@@ -81,40 +96,53 @@
           		<a class="denuncias-edit" th:href="@{/editarDenuncia(id_denuncia=${denuncia.id_denuncia})}">
           		<p class="i-B16 blueD">EDITAR DENÚNCIA</p>
           		</a>
-          	</div>																																																																																																																																																																																								
+          	</div>																																																																																												
           	<div th:if="${session.usuarioLogado}" class="denuncias-delete">
           		<a th:href="@{/removerDenuncia(id_denuncia=${denuncia.id_denuncia})}">
           		<p class="red i-B16 like">EXCLUIR</p>
           		</a>
           	</div>
-      	  </div>
-    	</div>
-       </div>
+          </div>
+        </div>
+      	<div class="resposta" th:if="${denuncia.resposta != null}">
+      		<h2 class="black1 i-B20">Resposta à denuncia:</h2>
+        </div>
+        <div class="resposta">
+        	<p class="i-R18 black2" th:text="${denuncia.resposta}"></p>
+        </div>
       </div>
+    </div>
     <nav class="filtro-bg">
       <p class="i-M18 white">Filtrar</p>
       <div>
+      <form action="/pegaDiabo" method="POST">
         <label class="i-SM18 white" for="categoria">Por categoria</label>
-        <select name="" id="categoria">
-          <option value="">SANEAMENTO</option>
-          <option value="">ILUMINAÇÃO</option>
-          <option value="">INFRAESTRUTURA</option>
-        </select>
+        <select name="filtracateg" id="categoria">
+            <option value="" disabled>Selecione</option>
+            <option 
+            th:each="categ : ${categorias}"
+            th:text="${categ.nome}"
+            th:value="${categ.id}">Saneamento</option>
+          </select>
+          <input class="filtrar" type="submit" value="Filtrar">
+      </form>
       </div>
-      <div>
+      <div class="filtrar-espaco">
+      <form>
         <label class="i-SM18 white" for="bairro">Por bairro</label>
-        <select name="" id="bairro">
-          <option value="">VILA RICA</option>
-          <option value="">SANTO ALEIXO</option>
-          <option value="">CENTRO</option>
-        </select>
+        <input class="filtra-bairro" type="text" name="bairro" id="bairro" placeholder="Nome do Bairro">
+      	<input class="filtrar" type="submit" value="Filtrar">
+      </form>
       </div>
-      <div>
+      <div class="filtrar-espaco">
+      <form>
         <label class="i-SM18 white" for="status">Por status</label>
-        <select name="" id="status">
-          <option value="">EM ANDAMENTO</option>
-          <option value="">CONCLUIDO</option>
+        <select name="status" id="status">
+          <option value="FALSE">EM ANDAMENTO</option>
+          <option value="TRUE">CONCLUIDO</option>
         </select>
+      	<input class="filtrar" type="submit" value="Filtrar">
+      </form>
       </div>
     </nav>
   </section>

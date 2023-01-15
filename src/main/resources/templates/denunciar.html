@@ -33,6 +33,10 @@
           <a class="white r-R20" href="./denuncias"><img src="./img/Flag.svg" alt="decoração" />Visualizar
             Denúncias</a>
         </li>
+        <li th:if="${session.usuarioLogado}">
+        	<a th:if="${session.usuarioLogado.isAdm}" href="./listaUsuario"><img src="./img/Person.svg" alt="decoração" />
+        	<p class="white r-R20">Listar Usuários</p></a>
+        </li>
        <li>
           <a th:if="${session.usuarioLogado}" class="white r-R20" href="./minhasDenuncias"><img src="./img/Flag.svg" alt="decoração" />Minhas Denúncias</a>
         </li>
@@ -58,8 +62,8 @@
     <h1 class="i-B42 black1">Registrar Denúncia</h1>
     
     <div th:if="${proto != null}">
-      <h2 class="black2 i-B20">Denúncia registrada com sucesso!</h2>
-        <p class="i-M18 black1">
+      <h2 class="green i-B20">Denúncia registrada com sucesso!</h2>
+        <p class="i-M18 green">
           A sua denúncia foi registrada sobre o protocolo de Nº: <b th:text="${proto}"></b><br>
           Guarde este número para acompanhar a sua reclamação.
         </p><br><br>

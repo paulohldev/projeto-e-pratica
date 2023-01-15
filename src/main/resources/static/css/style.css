@@ -13,10 +13,4 @@
 @import url('./seçoes/login.css');
 @import url('./seçoes/acompanhamento.css');
 @import url('./seçoes/protocolo.css');
-
-
-/* responsividade do site */ 
-
-@media only screen and (max-device-width: 900px) {
-/* .menu { width:100%; } */
-}
+@import url('./seçoes/listausuarios.css');

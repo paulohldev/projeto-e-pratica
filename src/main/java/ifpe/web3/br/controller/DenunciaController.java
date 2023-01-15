@@ -118,6 +118,7 @@ public class DenunciaController {
 		model.addAttribute("denuncia", denuncia);
 		model.addAttribute("categoria", categoria);
 		model.addAttribute("denuncias", this.denunciaDAO.listarDenuncias());
+		model.addAttribute("categorias", categoriaDAO.findAll());
 		return "visualizar";
 	}
 	@GetMapping("/minhasDenuncias")
@@ -125,6 +126,7 @@ public class DenunciaController {
 	Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
 		model.addAttribute("denuncia", denuncia);
 		model.addAttribute("categoria", categoria);
+		model.addAttribute("categorias", categoriaDAO.findAll());
 		model.addAttribute("denuncias", this.denunciaDAO.listarDenunciasMi(usuario.getId_usuario()));
 		return "visualizarMinhas";
 	}
