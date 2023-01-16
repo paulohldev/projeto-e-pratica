@@ -115,9 +115,9 @@
     <nav class="filtro-bg">
       <p class="i-M18 white">Filtrar</p>
       <div>
-      <form>
+      <form th:href="@{/denuncias/(${categoria})}" th:object="${categoria}" method="get">
         <label class="i-SM18 white" for="categoria">Por categoria</label>
-        <select name="filtracateg" id="categoria">
+        <select name="categoria" id="categoria">
             <option value="" disabled>Selecione</option>
             <option 
             th:each="categ : ${categorias}"
@@ -135,7 +135,7 @@
       </form>
       </div>
       <div class="filtrar-espaco">
-      <form>
+      <form action="./denuncias" method="get">
         <label class="i-SM18 white" for="status">Por status</label>
         <select name="status" id="status">
           <option value="FALSE">EM ANDAMENTO</option>
